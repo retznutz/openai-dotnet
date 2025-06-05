@@ -18,7 +18,11 @@ public partial class AudioExamples
             + " moisture, it is wise to postpone watering for a couple more days. When in doubt, it is often safer"
             + " to water sparingly and maintain a less-is-more approach.";
 
-        BinaryData speech = client.GenerateSpeech(input, GeneratedSpeechVoice.Alloy);
+        var options = new SpeechGenerationOptions
+        {
+            Instructions = "Speak in a friendly, conversational tone."
+        };
+        BinaryData speech = client.GenerateSpeech(input, GeneratedSpeechVoice.Alloy, options);
 
         using FileStream stream = File.OpenWrite($"{Guid.NewGuid()}.mp3");
         speech.ToStream().CopyTo(stream);

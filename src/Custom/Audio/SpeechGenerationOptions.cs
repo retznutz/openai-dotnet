@@ -37,4 +37,10 @@ public partial class SpeechGenerationOptions
     [CodeGenMember("Speed")]
 
     public float? SpeedRatio { get; set; }
+    /// <summary>
+    ///     Optional instructions to guide the model's speech generation. This is passed to the OpenAI API as the `instructions` parameter.
+    ///     Not all models may support this option.
+    /// </summary>
+    [CodeGenMember("Instructions")]
+    public string Instructions { get; set; }
 }
