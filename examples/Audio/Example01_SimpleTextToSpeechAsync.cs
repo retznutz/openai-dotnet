@@ -27,5 +27,13 @@ public partial class AudioExamples
 
         using FileStream stream = File.OpenWrite($"{Guid.NewGuid()}.mp3");
         speech.ToStream().CopyTo(stream);
+
+        // Streaming playback example
+        await client.GenerateSpeechStreamingAsync(input, GeneratedSpeechVoice.Alloy, options, chunk =>
+        {
+            // For demonstration, just print the size of each chunk
+            Console.WriteLine($"Received audio chunk of {chunk.Length} bytes");
+            // In a real application, you would write to a stream or audio output device
+        });
     }
 }
