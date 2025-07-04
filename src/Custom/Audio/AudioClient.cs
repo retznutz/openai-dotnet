@@ -150,6 +150,7 @@ public partial class AudioClient
         Argument.AssertNotNull(onAudioChunk, nameof(onAudioChunk));
         options ??= new();
         CreateSpeechGenerationOptions(text, voice, ref options);
+        options.Stream = true; // Ensure streaming is enabled in the request
 
         // Build the pipeline message for the /audio/speech endpoint using the internal method
         var content = BinaryContent.Create(options, ModelSerializationExtensions.WireOptions);

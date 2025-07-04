@@ -35,6 +35,11 @@ public partial class SpeechGenerationOptions
     ///     The speed of the generated audio expressed as a ratio between 0.5 and 2.0. The default is 1.0.
     /// </summary>
     [CodeGenMember("Speed")]
-
     public float? SpeedRatio { get; set; }
+
+    /// <summary>
+    /// If true, response will be streamed as audio chunks. Default is false.
+    /// </summary>
+    [CodeGenMember("stream")]
+    public bool? Stream { get; set; }
 }
